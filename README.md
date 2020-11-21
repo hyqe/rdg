@@ -1,6 +1,6 @@
 # Random Data Generator (rdg) 
 
-Generate Random Data for mocking and testing purposes. This Module will focuses manly the random generation of data and will try to avoid richly formatting data whenever possible. This module will be designed to pair nicely with the [github.com/hyqe/rich](https://github.com/hyqe/rich) module.
+Generates random data for mocking and testing. Avoid formatting whenever possible. Pair nicely with the [github.com/hyqe/rich](https://github.com/hyqe/rich) module to provide rich formatting options.
 
 
 ## TODOs:
@@ -111,6 +111,7 @@ func HTML() string
 
 ```go
 func SQL() string
+func SQLWith(fields ...string) string
 func SQLSelect() string
 func SQLUpdate() string
 func SQLInsert() string
@@ -144,7 +145,7 @@ func Any("Foo", 'b', 30, 7.1) string
 ```
 
 
-Format a string with list of random formatters
+Format a string randomly with list of formatters
 ```go
 type Formatter = func(string) string
 func Format(string, ...Formatter) string
