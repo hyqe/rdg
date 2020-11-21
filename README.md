@@ -142,3 +142,10 @@ Pick a random value from a list
 // func Any(list ...interface) interface
 func Any("Foo", 'b', 30, 7.1) string 
 ```
+
+
+Format a string with list of random formatters
+```go
+type Formatter = func(string) string
+func Format(string, ...Formatter) string
+```
