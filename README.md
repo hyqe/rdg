@@ -1,9 +1,9 @@
 # Random Data Generator (rdg) 
 
-Generate Random Data for mocking and testing purposes.
+Generate Random Data for mocking and testing purposes. This Module will focuses manly the random generation of data and will try to avoid richly formatting data whenever possible. This module will be designed to pair nicely with the [github.com/hyqe/rich](https://github.com/hyqe/rich) module.
 
 
-## TODO:
+## TODOs:
 
 ### Names
 
@@ -47,7 +47,6 @@ func EmailAddressResource() string
 
 ```go
 func PhoneNumber() string 
-func PhoneNumberUS() string 
 ```
 
 ### Business
@@ -61,40 +60,33 @@ func Department() string
 ### Time
 
 ```go
-func Time(min, max time.Time) time.Time 
-func Date() string 
-func DateTime() string 
+func Time() time.Time 
+func TimeBetween(min, max time.Time)
 ```
 
 
-### HTTP URL
+### URL
 ```go
-func URL() url.Url 
+func URL() url.URL
 func DomainName() string 
-func URLQueryString() string 
-func URLSchema() string 
+func URLQuery() string 
+func URLSchema() string
+func URLPath() string
+func URLFragment() string
 ```
 
 ### Money
 
 ```go
-func Money(min, man float64) string 
-func Dollar(min, max int64) string
+func Money() string 
+func MoneyBetween(min, man float64) string 
 ```
 
 ### Emoji
 
 ```go
 func Emoji() string
-```
-
-### Data Structures
-
-```go
-func FieldName() string 
-func JSON() string 
-func XML() string 
-func HTML() string
+func ASCIIArt() string
 ```
 
 ### Text
@@ -105,12 +97,32 @@ func Sentence(words uint64) string
 func Paragraph(sentences uint64) string
 ```
 
+
+### Data Structures
+
+```go
+func FieldName() string
+func JSON() string 
+func XML() string 
+func HTML() string
+```
+
+### SQL
+
+```go
+func SQL() string
+func SQLSelect() string
+func SQLUpdate() string
+func SQLInsert() string
+func SQLDelete() string
+```
+
 ### Utilities
 
 Pick a random number between min and max
 ```go
-// func Number(min, max int64) int64
-func Number(1,10)
+func Number() uint64
+func NumberBetween(min, max uint64) uint64
 ```
 
 Pick a random string  from a list of string s
