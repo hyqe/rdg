@@ -19,8 +19,7 @@ func TestFormat(t *testing.T) {
 	for i := 0; i < 10; i++ {
 		result := Format(in, formatter...)
 		if result != (in+"1") && result != (in+"2") && result != (in+"3") {
-			t.Errorf("failed to format: %v", result)
-			t.FailNow()
+			t.Fatalf("failed to format: %v", result)
 		}
 	}
 }
