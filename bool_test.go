@@ -5,7 +5,7 @@ import "testing"
 func TestBool(t *testing.T) {
 	generatedT := false
 	generatedF := false
-	tries := 20
+	tries := 100
 	for i := 0; i < tries; i++ {
 		b := Bool()
 		if !generatedT {
@@ -17,6 +17,9 @@ func TestBool(t *testing.T) {
 			if b == true {
 				generatedF = true
 			}
+		}
+		if generatedT && generatedF {
+			break
 		}
 	}
 	if !generatedT {
