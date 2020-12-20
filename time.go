@@ -11,10 +11,9 @@ func Time() time.Time {
 	return t.Add(time.Duration(rand.Int63()))
 }
 
-// TimeBetween generates a random time between two times. start time
-// may be greater then end time. the max duration of nano seconds
-// between the start and end is limit to what can be stored in a
-// int64 - 1: 9223372036854775806 nano seconds (~292 years)
+// TimeBetween generates a random time between two times.
+// if the start time is after the end time, the generated
+// time will be before the start time.
 func TimeBetween(start, end time.Time) time.Time {
 	if start.Equal(end) {
 		return start
