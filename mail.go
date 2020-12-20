@@ -6,7 +6,7 @@ import (
 )
 
 // Street returns a random street address
-// e.g. "123 Foo St Apt 2"
+// e.g. "123 Foo St APT 2"
 func Street() string {
 	street := Street1()
 	if Bool() {

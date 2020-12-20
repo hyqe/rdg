@@ -114,8 +114,5 @@ func strArrContains(a []string, x string) bool {
 			break
 		}
 	}
-	if found {
-		return true
-	}
-	return false
+	return found
 }
