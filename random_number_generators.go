@@ -2,11 +2,9 @@ package rdg
 
 import (
 	"math/rand"
-	"time"
 )
 
 func NewInt32() int32 {
-	rand.Seed(time.Now().UnixNano())
 	value := rand.Int31n(2147483647)
 	if rand.Intn(2) == 1 {
 		value = value * -1
@@ -16,13 +14,23 @@ func NewInt32() int32 {
 }
 
 func NewInt64() int64 {
-	rand.Seed(time.Now().UnixNano())
 	value := rand.Int63n(9223372036854775807)
 	if rand.Intn(2) == 1 {
 		value = value * -1
 	}
 	return value
 }
+
+func NewUint32() uint32 {
+        value := uint32(NewInt32Between(-2147483648, 2147483647))
+        return value
+}
+
+func NewUint64() uint64 {
+        value := uint64(NewInt64Between(-9223372036854775808, 9223372036854775807))
+        return value
+}
+
 
 func NewInt32Between(min int32, max int32) int32 {
 
@@ -44,7 +52,6 @@ func NewInt32Between(min int32, max int32) int32 {
 	} else {
 		realmax = minmax["max"]
 	}
-	rand.Seed(time.Now().UnixNano())
 	// use the realmax variable to attain a random value from rand.Int31n()
 	value := rand.Int31n(realmax)
 	// create a random chance that the return value is negative or positive
@@ -82,7 +89,6 @@ func NewInt64Between(min int64, max int64) int64 {
 	} else {
 		realmax = minmax["max"]
 	}
-	rand.Seed(time.Now().UnixNano())
 	// use the realmax variable to attain a random value from rand.Int31n()
 	value := rand.Int63n(realmax)
 	// create a random chance that the return value is negative or positive
@@ -99,3 +105,5 @@ func NewInt64Between(min int64, max int64) int64 {
 	}
 	return value
 }
+
+
