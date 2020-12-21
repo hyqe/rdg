@@ -1,6 +1,8 @@
 package rdg
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestBool(t *testing.T) {
 	generatedT := false
@@ -8,15 +10,11 @@ func TestBool(t *testing.T) {
 	tries := 100
 	for i := 0; i < tries; i++ {
 		b := Bool()
-		if !generatedT {
-			if b == true {
-				generatedT = true
-			}
+		if !generatedT && b == true {
+			generatedT = true
 		}
-		if !generatedF {
-			if b == true {
-				generatedF = true
-			}
+		if !generatedF && b == false {
+			generatedF = true
 		}
 		if generatedT && generatedF {
 			break
