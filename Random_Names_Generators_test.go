@@ -17,14 +17,25 @@ func TestNameGenerators(t *testing.T) {
 		FirstNameMale,
 		FirstNameFemale,
 	}
+	var funcNames = []string {
+		"Prefix",
+		"Suffix",
+		"FirstName",
+		"LastName",
+		"PrefixMale",
+		"PrefixFemale",
+		"SuffixMale",
+		"SuffixFemale",
+		"FirstNameMale",
+		"FirstNameFemale",
+	}
 	var inc int = 0
-	for i:=0;i<1000000;i++ {
+	for i:=0;i<1000;i++ {
 		if inc == len(nameFunctions) {
 			inc = 0
 		}
 		if nameFunctions[inc]() == "" {
-			t.Errorf("This function failed! --- (%v)", inc)
-			t.FailNow()
+			t.Fatalf("function (%v()) failed!\n", funcNames[inc])
 		}
 		inc = inc + 1
 	}
