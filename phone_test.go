@@ -3,10 +3,8 @@ package rdg
 import (
 	"errors"
 	"regexp"
-	"strconv"
 	"strings"
 	"testing"
-	"fmt"
 )
 
 var phoneRegex = regexp.MustCompile(`\+1[0-9]\d{9}`)
@@ -30,14 +28,6 @@ func validatePhone(number string) bool {
 		return false
 	}
 	return true
-}
-
-func stringNumber(digits, min, max int) string {
-	var value string = ""
-	for i := 0; i < digits; i++ {
-		value = value + strconv.Itoa(IntBetween(min, max))
-	}
-	return value
 }
 
 func TestPhone(t *testing.T) {
@@ -66,8 +56,7 @@ func TestPhone(t *testing.T) {
 			testCase = CustomNumber{
 				"0",
 				"0",
-				//stringNumber(4, 0, 10),
-				"3333",
+				stringNumber(4, 0, 10),
 			}
 		}
 		value := CustomPhoneNumber(testCase)
@@ -75,7 +64,6 @@ func TestPhone(t *testing.T) {
 		if err2 != nil {
 			t.Fatalf("CustomPhoneNumber() failed to return a proper phone number")
 		}
-		fmt.Printf("Phone Number: [ %v ]\n", value)
 	}
 
 }

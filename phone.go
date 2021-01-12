@@ -21,29 +21,24 @@ type CustomNumber struct {
 	line_number string
 }
 
+func stringNumber(digits, min, max int) string {
+        var value string = ""
+        for i := 0; i < digits; i++ {
+                value = value + strconv.Itoa(IntBetween(min, max))
+        }
+        return value
+}
+
 func CustomPhoneNumber(number CustomNumber) string {
 
-	var value string = ""
 	if len(number.area_code) < 3 {
-		for i := 0; i < 2; i++ {
-			value = value + strconv.Itoa(IntBetween(0, 10))
-		}
-		number.area_code = strconv.Itoa(IntBetween(0, 2)) + value
-		value = ""
+		number.area_code = strconv.Itoa(IntBetween(0, 2)) + stringNumber(2, 0, 10)
 	}
 	if len(number.prefix) < 3 {
-		for i := 0; i < 3; i++ {
-			value = value + strconv.Itoa(IntBetween(0, 10))
-		}
-		number.prefix = value
-		value = ""
+		number.prefix = stringNumber(3, 0, 10)
 	}
 	if len(number.line_number) < 4 {
-		for i := 0; i < 4; i++ {
-			value = value + strconv.Itoa(IntBetween(0, 10))
-		}
-		number.line_number = value
-		value = ""
+		number.line_number = stringNumber(4, 0, 10)
 	}
 
 	customPhoneNumber := "1" + number.area_code + number.prefix + number.line_number
